@@ -17,8 +17,7 @@ def partOne(vals):
             #     vals[j] = 6
             # else:
             #     vals[j] -= 1
-        for _ in range(zeroCnt):
-            vals.append(8)
+        vals.extend([8 for _ in range(zeroCnt)])
     return len(vals)
 
 
