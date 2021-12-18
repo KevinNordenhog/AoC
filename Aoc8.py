@@ -1,6 +1,3 @@
-from operator import itemgetter
-
-
 def main():
     with open("input8.txt") as file:
         lines = file.read().splitlines()
