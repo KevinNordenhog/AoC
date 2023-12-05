@@ -7,14 +7,10 @@ def aoc():
         nums = []
         nums2 = []
         for line in lines:
-            # num = ''.join(char for char in line if char.isdigit())
-            # nums.append(int(num[0]+num[-1]))
-            
+            num = ''.join(char for char in line if char.isdigit())
+            nums.append(int(num[0]+num[-1]))
             nums2.append(findDigits(line))
         print(sum(nums))
-        for i in range(0, len(nums2)):
-            print(nums2[i])
-            print(lines[i])
         print(sum(nums2))
 
 def findDigits(string):
@@ -33,10 +29,7 @@ def findDigits(string):
     return getSum(lowestNumber, highestNumber)
 
 def getSum(firstNumber: tuple[str, int], secondNumber: tuple[str, int]):
-    if firstNumber[1] == secondNumber[1]:
-        return int(getNumber(firstNumber[0]))
-    else:
-        return int(getNumber(firstNumber[0]) + getNumber(secondNumber[0]))
+    return int(getNumber(firstNumber[0]) + getNumber(secondNumber[0]))
 
 def getNumber(string):
     if string.isdigit():
@@ -46,4 +39,4 @@ def getNumber(string):
 
 aoc()
 #P1 54990
-#P2 51133
+#P2 54473
