@@ -38,3 +38,109 @@
 # To see how much margin of error you have, determine the number of ways you can beat the record in each race; in this example, if you multiply these values together, you get 288 (4 * 8 * 9).
 
 # Determine the number of ways you could beat the record in each race. What do you get if you multiply these numbers together?
+
+# --- Part Two ---
+# As the race is about to start, you realize the piece of paper with race times and record distances you got earlier actually just has very bad kerning. There's really only one race - ignore the spaces between the numbers on each line.
+
+# So, the example from before:
+
+# Time:      7  15   30
+# Distance:  9  40  200
+# ...now instead means this:
+
+# Time:      71530
+# Distance:  940200
+# Now, you have to figure out how many ways there are to win this single race. In this example, the race lasts for 71530 milliseconds and the record distance you need to beat is 940200 millimeters. You could hold the button anywhere from 14 to 71516 milliseconds and beat the record, a total of 71503 ways!
+
+# How many ways can you beat the record in this one much longer race?
+
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument("--runTests", action="store_true", help="Run with testdata")
+
+args = parser.parse_args()
+
+class Race:
+    def __init__(self, time, recordDistance):
+        self.time = int(time)
+        self.recordDistance = int(recordDistance)
+        self.numberOfWaysToWin = 0
+
+    def getRaceInfo(self):
+        return """
+        Time = {},
+        Record distance= {},
+        Number of ways to win = {}
+        """.format(self.time, self.recordDistance, self.numberOfWaysToWin)
+
+    def calculateNumberOfWaysToWin(self):
+        testList = []
+        for i in range(1, self.time):
+            # print("Time: " + str(self.time))
+            # print("Execution: " + str((self.time - i)*i))
+            # print("RecordDistance: " + str(self.recordDistance))
+            # print("###################################")
+            testList.append((self.time - i)*i)
+            if (self.time - i) * i > self.recordDistance:
+                self.numberOfWaysToWin += 1
+    
+def main():
+    args = parser.parse_args()
+    if args.runTests:
+        runTest()
+    else:
+        with open("input6.txt") as file:
+            lines = file.read().splitlines()
+        print("Part One:", partOne(lines))
+        print("Part Two:", partTwo(lines))
+
+def partOne(testlines):
+    races = getRacesPartOne(testlines)
+    for race in races:
+        race.calculateNumberOfWaysToWin()
+    return mulitplyWins(races)
+
+def partTwo(testlines):
+    race = getRacePartTwo(testlines)
+    race.calculateNumberOfWaysToWin()
+    return race.numberOfWaysToWin
+
+def mulitplyWins(races: list[Race]):
+    result = 1
+    for race in races:
+        result *= race.numberOfWaysToWin
+    return result
+
+def getRacesPartOne(lines):
+    races = []
+    times = lines[0].split(":")[1].split()
+    distances = lines[1].split(":")[1].split()
+    for i in range(len(times)):
+        races.append(Race(times[i], distances[i]))
+    return races
+
+def getRacePartTwo(lines):
+    time = int(lines[0].split(":")[1].replace(" ",""))
+    distance = int(lines[1].split(":")[1].replace(" ",""))
+    return Race(time, distance)
+
+def printRaceValues(races: list[Race]):
+    for race in races:
+        print("Race {}: {}".format(races.index(race), race.getRaceInfo()))
+
+
+def runTest():
+    testValuesPartOne = """Time:      7  15   30
+    Distance:  9  40  200
+    """
+
+    testlines = testValuesPartOne.splitlines()
+    partOneResult = partOne(testlines)
+    assert partOneResult == 288, "got result: {}".format(partOneResult)
+
+    partTwoResult = partTwo(testlines)
+    assert partTwoResult == 71503, "got result: {}".format(partTwoResult)
+
+if __name__ == "__main__":
+    main()
