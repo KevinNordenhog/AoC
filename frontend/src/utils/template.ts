@@ -1,25 +1,23 @@
-export function solvePart(input: string): number {
-    const lines = input.split('\n');
-    let sum = 0;
-    
-    for (const line of lines) {
-      // Your solution logic here
-      // This is just a placeholder
-      sum += parseInt(line) || 0;
-    }
-    
-    return sum;
-  }
+import { getInput } from '../utils/inputReader';
+
+export const solvePart1 = async (useCustomInput = false, customInput = ''): Promise<number> => {
+  const input = await getInput({ 
+    day: 1, 
+    useCustomInput, 
+    customInput 
+  });
   
-  export function solvePart2(input: string): number {
-    const lines = input.split('\n');
-    let sum = 0;
-    
-    for (const line of lines) {
-      // Your solution logic here
-      // This is just a placeholder
-      sum += parseInt(line) || 0;
-    }
-    
-    return sum;
-  }
+  // Your solution logic here
+  return input.length;
+};
+
+export const solvePart2 = async (useCustomInput = false, customInput = ''): Promise<number> => {
+  const input = await getInput({ 
+    day: 1, 
+    useCustomInput, 
+    customInput 
+  });
+  
+  // Your solution logic here
+  return input.length;
+}; 
