@@ -1,4 +1,4 @@
-import { getInput } from '../utils/inputReader';
+import { getInput } from '../../inputReader';
 
 export const solvePart1 = async (useCustomInput = false, customInput = ''): Promise<number> => {
   const input = await getInput({ 

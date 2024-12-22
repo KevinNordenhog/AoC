@@ -10,9 +10,9 @@ export default function Home() {
           <DayCard
             day={1}
             title="Day 1: Historian Hysteria"
-            completed={false}
+            completed={true}
           />
-          {/* <DayCard day={2} title="Day 2: Cube Conundrum" completed={false} /> */}
+          <DayCard day={2} title="Day 2: Red-Nosed Reports" completed={false} />
         </div>
       </main>
     </div>

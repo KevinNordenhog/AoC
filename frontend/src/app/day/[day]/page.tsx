@@ -17,6 +17,13 @@ export default function DayPage({
   const day = parseInt(resolvedParams.day);
   const solution = solutions[day];
 
+//   console.log('day');
+//   console.log(day);
+//   console.log('solutions');
+//   console.log(solutions);
+//   console.log('solution');
+//   console.log(solution);
+
   const solvePart1 = async () => {
     const result = await solution.solvePart1(true, input);
     setPart1Result(result);
