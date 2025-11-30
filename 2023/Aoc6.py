@@ -59,8 +59,6 @@ import argparse
 parser = argparse.ArgumentParser()
 parser.add_argument("--runTests", action="store_true", help="Run with testdata")
 
-args = parser.parse_args()
-
 class Race:
     def __init__(self, time, recordDistance):
         self.time = int(time)
