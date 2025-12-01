@@ -1,18 +1,18 @@
 def partOne(lines):
-    return lines
+    return 0
 
 def partTwo(lines):
-    return lines
+    return 0
 
 def runTest():
     testValuesPartOne = """Test data
-    you can use
-    for testing purposes
-    """
+you can use
+for testing purposes
+"""
 
     testlines = testValuesPartOne.splitlines()
     partOneResult = partOne(testlines)
-    assert partOneResult == 288, "got result: {}".format(partOneResult)
+    assert partOneResult == 0, "got result: {}".format(partOneResult)
 
     partTwoResult = partTwo(testlines)
-    assert partTwoResult == 71503, "got result: {}".format(partTwoResult)
+    assert partTwoResult == 0, "got result: {}".format(partTwoResult)
