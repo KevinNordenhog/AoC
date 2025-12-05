@@ -96,29 +96,34 @@ def findZeros(lines):
         if line[0] == 'L':
             newPosition = (current - spin) % dial_size
             if (current != 0 and current - spin < 0):
-                ZERO_PASS += abs(current - spin) // dial_size + 1 - (1 if newPosition == 0 else 0)
+                ZERO_PASS += abs(current - spin) // dial_size + \
+                    1 - (1 if newPosition == 0 else 0)
             elif (current == 0 and spin >= dial_size):
                 ZERO_PASS += spin // dial_size - (1 if newPosition == 0 else 0)
             current = newPosition
         else:
             newPosition = (current + spin) % dial_size
             if (current != 0 and current + spin > dial_size):
-                ZERO_PASS += (current + spin) // dial_size - (1 if newPosition == 0 else 0)
+                ZERO_PASS += (current + spin) // dial_size - \
+                    (1 if newPosition == 0 else 0)
             elif (current == 0 and spin >= dial_size):
                 ZERO_PASS += spin // dial_size - (1 if newPosition == 0 else 0)
             current = newPosition
         if current == 0:
             ZERO_COUNT += 1
 
+
 def partOne(lines):
     findZeros(lines)
     return ZERO_COUNT
-            
+
+
 def partTwo(lines):
     return ZERO_PASS + ZERO_COUNT
 
 # Part One: 1195
 # Part Two: 6770
+
 
 def runTest():
     testValuesPartOne = """L68

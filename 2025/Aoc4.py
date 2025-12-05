@@ -172,16 +172,18 @@ def partOne(lines):
     xMax = len(lines[0])
     yMax = len(lines)
     count = 0
-    for y in range(0,yMax):
+    for y in range(0, yMax):
         for x in range(0, xMax):
             if (lines[y][x] == "."):
                 continue
             neighbors = numberOfNeighbors(lines, x, y, xMax, yMax)
             if (neighbors < 4):
                 count += 1
-                copyoflines[y] = copyoflines[y][:x] + "x" + copyoflines[y][x+1:]
+                copyoflines[y] = copyoflines[y][:x] + \
+                    "x" + copyoflines[y][x+1:]
 
     return count
+
 
 def partTwo(lines):
     xMax = len(lines[0])
@@ -190,7 +192,7 @@ def partTwo(lines):
     done = False
     while (not done):
         done = True
-        for y in range(0,yMax):
+        for y in range(0, yMax):
             for x in range(0, xMax):
                 if (lines[y][x] == "."):
                     continue
@@ -202,6 +204,7 @@ def partTwo(lines):
 
     return count
 
+
 def numberOfNeighbors(lines: list[str], x: int, y: int, xMax: int, yMax: int):
     neigh = 0
     for i in range(y-1, y+2):
@@ -211,6 +214,7 @@ def numberOfNeighbors(lines: list[str], x: int, y: int, xMax: int, yMax: int):
             if (lines[i][j] == "@"):
                 neigh += 1
     return neigh
+
 
 def runTest():
     testValuesPartOne = """..@@.@@@@.
