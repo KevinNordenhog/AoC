@@ -49,6 +49,7 @@
 #
 # Process the database file again. How many ingredient IDs are considered to be fresh according to the fresh ingredient ID ranges?
 
+
 def partOne(lines):
     (ranges, ids) = splitInput(lines)
     count = 0
@@ -64,10 +65,9 @@ def partOne(lines):
 
 
 def partTwo(lines):
-    (ranges, ids) = splitInput(lines)
+    (ranges, _) = splitInput(lines)
     merged = []
-    rangs = [(int(rang.split("-")[0]), int(rang.split("-")[1]))
-             for rang in ranges]
+    rangs = [(int(rang.split("-")[0]), int(rang.split("-")[1])) for rang in ranges]
     rangs.sort(key=lambda x: x[0])
     for lower, upper in rangs:
         if not merged or merged[-1][1] < lower:

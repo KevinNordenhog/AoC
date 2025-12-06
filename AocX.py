@@ -1,8 +1,10 @@
 def partOne(lines):
     return 0
 
+
 def partTwo(lines):
     return 0
+
 
 def runTest():
     testValuesPartOne = """Test data
@@ -16,3 +18,4 @@ for testing purposes
 
     partTwoResult = partTwo(testlines)
     assert partTwoResult == 0, "got result: {}".format(partTwoResult)
+
