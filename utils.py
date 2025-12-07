@@ -11,3 +11,11 @@ def createGrid(lines: list[str], type: Type):
         for j in range(gridColCount):
             grid[(i, j)] = numbers[i][j]
     return grid
+
+
+def println(lines: list[str]):
+    print("\n".join(lines))
+
+
+def replace_char(s: str, index: int, new_char: str) -> str:
+    return s[:index] + new_char + s[index + 1 :]
